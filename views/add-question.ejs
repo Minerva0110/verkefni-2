@@ -1,0 +1,17 @@
+<form action="/add-question" method="POST">
+    <label>Spurning:</label>
+    <input type="text" name="question" required minlength="5" maxlength="200">
+    
+    <label>Flokkur:</label>
+    <select name="category_id">
+        <% categories.forEach(category => { %>
+            <option value="<%= category.id %>"><%= category.name %></option>
+        <% }); %>
+    </select>
+
+    <label>Svör:</label>
+    <input type="text" name="answers[0][text]" required>
+    <input type="checkbox" name="answers[0][isCorrect]">
+
+    <button type="submit">Senda</button>
+</form>
