@@ -1,10 +1,7 @@
 function submitHandler(e) {
   e.preventDefault();
 
-  /** @type HTMLElement */
   const form = e.target;
-
-  // Find all elements
   const correct = form.querySelector('[data-correct="true"]');
   const selected = form.querySelector(':checked');
 
