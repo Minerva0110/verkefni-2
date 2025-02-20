@@ -5,6 +5,7 @@ let totalQuestionsCount = 0;
 let currentQuestions = [];
 let currentCategory = '';
 
+
 async function fetchQuizCategories() {
     try {
         console.log('Sæki tiltæk próf...');
@@ -45,12 +46,11 @@ async function fetchQuizData(filename, category) {
         }
 
         const quizData = await response.json();
-        console.log(`✅ Prófgögn hlaðin fyrir ${category}:`, quizData);
+        console.log(`Prófgögn hlaðin fyrir ${category}:`, quizData);
 
         correctAnswersCount = 0;
         currentCategory = category;
-
-        // ✅ Load saved questions only for the current category
+        
         const savedQuestions = JSON.parse(localStorage.getItem(`customQuestions_${currentCategory}`)) || [];
         let allQuestions = [...quizData.questions, ...savedQuestions];
 
@@ -59,12 +59,12 @@ async function fetchQuizData(filename, category) {
         }
 
         currentQuestions = shuffleArray(allQuestions);
-        totalQuestionsCount = currentQuestions.length; // ✅ Always update total count
+        totalQuestionsCount = currentQuestions.length;
 
-        console.log(`📌 Hleð ${totalQuestionsCount} spurningar fyrir ${category}`);
+        console.log(`Hleð ${totalQuestionsCount} spurningar fyrir ${category}`);
         renderQuiz(currentQuestions);
     } catch (error) {
-        console.error(`⛔ Villa við að hlaða ${filename}:`, error);
+        console.error(`Villa við að hlaða ${filename}:`, error);
     }
 }
 
@@ -78,7 +78,7 @@ function shuffleArray(array) {
 
 function renderQuiz(questions) {
     if (!questions || questions.length === 0) {
-        console.error("⛔ Engar spurningar til að sýna!");
+        console.error("Engar spurningar til að sýna!");
         document.getElementById('quiz-container').innerHTML = "<p>⚠️ Engar spurningar fundust.</p>";
         return;
     }
@@ -188,6 +188,18 @@ function renderAddQuestionForm(quizContainer) {
         e.preventDefault();
         addNewQuestion();
     });
+
+    const resetButton = document.createElement('button');
+resetButton.textContent = 'Eyða viðbættum spurningum';
+resetButton.classList.add('delete-button');
+resetButton.addEventListener('click', () => {
+    localStorage.removeItem(`customQuestions_${currentCategory}`);
+    alert('Allar viðbættar spurningar hafa verið fjarlægðar.');
+    fetchQuizData(`/DATA/${currentCategory.toLowerCase()}.json`, currentCategory);
+});
+
+addQuestionContainer.appendChild(resetButton);
+
 }
 
 function addNewQuestion() {
@@ -196,6 +208,13 @@ function addNewQuestion() {
     const answer2Input = document.getElementById('new-answer-2');
     const answer3Input = document.getElementById('new-answer-3');
     const confirmationMessage = document.getElementById('confirmation-message');
+
+    if (!questionInput.value.trim() || !answer1Input.value.trim() || !answer2Input.value.trim() || !answer3Input.value.trim()) {
+        confirmationMessage.innerHTML = `⚠️ Vinsamlegast fylltu út alla reiti.`;
+        confirmationMessage.style.color = "red";
+        confirmationMessage.style.display = 'block';
+        return;
+    }
 
     const newQuestion = {
         question: questionInput.value.trim(),
@@ -207,15 +226,18 @@ function addNewQuestion() {
     };
 
     let savedQuestions = JSON.parse(localStorage.getItem(`customQuestions_${currentCategory}`)) || [];
+
     savedQuestions.push(newQuestion);
+
     localStorage.setItem(`customQuestions_${currentCategory}`, JSON.stringify(savedQuestions));
 
-    totalQuestionsCount++;
-
-    confirmationMessage.innerHTML = `✅ Ný spurning bætt við! <button id="retry-quiz">Viltu reyna aftur?</button>`;
+    confirmationMessage.innerHTML = `✅ Ný spurning bætt við!`;
+    confirmationMessage.style.color = "green";
     confirmationMessage.style.display = 'block';
 
-    document.getElementById('retry-quiz').addEventListener('click', () => {
-        fetchQuizData(`/DATA/${currentCategory.toLowerCase()}.json`, currentCategory);
-    });
+    questionInput.value = "";
+    answer1Input.value = "";
+    answer2Input.value = "";
+    answer3Input.value = "";
+
 }

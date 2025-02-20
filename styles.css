@@ -6,7 +6,7 @@
 
   --color-correct: #8dcf8f;
   --color-incorrect: #ff8e8e;
-  --background-color: #f7f9fb;
+  --background-color: #B3E5FC;
   --primary-color: #666; 
   --button-hover: #999;
   --text-color: #333;
@@ -34,6 +34,12 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   padding: var(--spacing);
+}
+
+#quiz-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Navigation */
@@ -77,13 +83,12 @@ body {
 /* Quiz Title */
 h1 {
   font-size: 2.5rem;
-  color: var(--primary-color); /* Now dark gray */
+  color: var(--primary-color); 
   text-align: center;
   margin-bottom: 1rem;
   font-weight: var(--heading-font-weight);
 }
 
-/* Question Formatting */
 h2 {
   font-size: 1.5rem;
   text-align: center;
@@ -91,12 +96,33 @@ h2 {
   font-weight: var(--heading-font-weight);
 }
 
-/* "Answers" Text - Now Normal Size */
-.answers-label {
-  font-size: 1rem;
-  font-weight: normal;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
+#site-footer {
+  width: 100%; 
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #B3E5FC;
+  color: #000;
+  font-size: 14px;
+  border-top: 2px solid #B3E5FC;
+}
+
+
+.watermark { 
+  font-size: 14px;
+  font-weight: bold; 
+  opacity: 0.8;
+}
+
+
+.answer-label {
+  font-weight: bold; 
+  font-size: 16px; 
+  color: #333;
+  display: block; 
+  padding: 8px;
+  border-radius: 5px; 
+  cursor: pointer;
 }
 
 /* Answer Section */
@@ -163,7 +189,6 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
-/* Add this to your existing CSS */
 #add-question-form {
   display: flex;
   flex-direction: column;
@@ -199,7 +224,7 @@ h2 {
 
 /* Submit Button */
 .question__form button {
-  background-color: var(--primary-color); /* Now dark gray */
+  background-color: var(--primary-color);
   color: #fff;
   padding: 0.75rem 1.25rem;
   border: none;
@@ -210,14 +235,32 @@ h2 {
 }
 
 .question__form button:hover {
-  background-color: var(--button-hover); /* Now light gray */
+  background-color: var(--button-hover); 
 }
+
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
 
 /* Quiz Completion Message */
 .quiz-completed {
   font-size: 1.5rem;
   font-weight: var(--heading-font-weight);
-  color: var(--primary-color); /* Now dark gray */
+  color: var(--primary-color);
   margin-top: 2rem;
 }
 

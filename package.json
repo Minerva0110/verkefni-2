@@ -1,5 +1,5 @@
 {
-  "name": "vef2-2025-v1-synilausn",
+  "name": "verkefni-2",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,11 +11,12 @@
     "build:clean": "rimraf dist",
     "build:generate": "node src/generate.js",
     "build:copy-public": "cpy public dist --flat",
-    "dev": "browser-sync start --serveStatic ./dist --server --files ./dist/*.* ./dist/*.*",
     "lint": "eslint src",
-    "test": "node --test --experimental-test-module-mocks",
+    "test": "jest",
     "test:watch": "node --test --watch --experimental-test-module-mocks",
-    "test:coverage": "node --test --experimental-test-coverage --experimental-test-module-mocks"
+    "test:coverage": "node --test --experimental-test-coverage --experimental-test-module-mocks",
+    "start": "node server.js",
+    "dev": "node --watch-path ./src src/server.js"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
@@ -30,6 +31,7 @@
     "22": "^0.0.0",
     "axios": "^1.7.9",
     "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
     "cpy-cli": "^5.0.0",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
