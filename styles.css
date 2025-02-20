@@ -113,35 +113,33 @@ button {
   margin: 5px; 
 }
 
-/* Specific styles for the toggle-register button */
 #toggle-register {
-  background-color: #666; /* Gray color */
-  color: white; /* White text */
+  background-color: #666;
+  color: white; 
 }
 
 #toggle-register:hover {
-  background-color: #555; /* Slightly darker gray on hover */
+  background-color: #555; 
 }
 
-/* Specific styles for the toggle-login button */
 #toggle-login {
-  background-color: #666; /* Gray color */
-  color: white; /* White text */
+  background-color: #666;
+  color: white; 
 }
 
 #toggle-login:hover {
-  background-color: #555; /* Slightly darker gray on hover */
+  background-color: #555;
 }
 
-/* Specific styles for the logout-button */
 #logout-button {
-  background-color: #666; /* Gray color */
-  color: white; /* White text */
+  background-color: #666;
+  color: white;
 }
 
 #logout-button:hover {
-  background-color: #555; /* Slightly darker gray on hover */
+  background-color: #555; 
 }
+
 
 h2 {
   font-size: 1.5rem;
