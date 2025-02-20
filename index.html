@@ -7,16 +7,42 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div id = "quiz-wrapper">
-  <h1>Velkomin í Vefforritunarprófið! 🌐 </h1>
-  <nav id="quiz-nav"></nav>
 
-  <div id="quiz-container"></div>
+  <h1>Velkomin í Vefforritunarprófið! 🌐</h1>
 
+  <!-- ✅ Registration Form (Hidden by Default) -->
+  <form id="register-form" style="display: none;">
+      <h2>Nýskráning</h2>
+      <input type="text" id="new-username" placeholder="Nýtt notandanafn" required>
+      <input type="password" id="new-password" placeholder="Nýtt lykilorð" required>
+      <button type="submit">Búa til aðgang</button>
+      <p id="register-message"></p>
+      <button type="button" id="toggle-login">Áttu nú þegar aðgang? Skrá inn</button>
+  </form>
+
+  <!-- ✅ Login Form -->
+  <form id="login-form">
+      <h2>Innskráning</h2>
+      <input type="text" id="username" placeholder="Notandanafn" required>
+      <input type="password" id="password" placeholder="Lykilorð" required>
+      <button type="submit">Skrá inn</button>
+      <p id="login-message"></p>
+      <button type="button" id="toggle-register">Stofna aðgang hér</button>
+  </form>
+
+  <!-- ✅ Quiz Section (Hidden Until Login) -->
+  <div id="quiz-wrapper" style="display: none;">
+      <nav id="quiz-nav"></nav>
+      <div id="quiz-container"></div>
+      <button id="logout-button" style="display: none;">Útskrá</button>
+  </div>
+
+  <footer id="site-footer">
+    <p>Allur réttur áskilinn &copy; 2025 | <span class="watermark">vefforritun 2</span></p>
+  </footer>
+
+  <script src="auth.js"></script>
   <script src="main.js"></script>
+
 </body>
-<footer id="site-footer">
-  <p>Allur réttur áskilinn &copy; 2025 | <span class="watermark">vefforritun 2</span></p>
-</footer>
-</div>
 </html>

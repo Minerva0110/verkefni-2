@@ -7,6 +7,7 @@ let currentCategory = '';
 
 
 async function fetchQuizCategories() {
+    console.info('✅ fetchQuizCategories() called from main.js');
     try {
         console.info('Sæki tiltæk próf...');
         const response = await fetch('/DATA/index.json');
@@ -20,7 +21,7 @@ async function fetchQuizCategories() {
 
         renderNavigation(quizList);
     } catch (error) {
-        console.error('Villa við að hlaða index.json:', error);
+        console.error('❌ Villa við að hlaða index.json:', error);
     }
 }
 

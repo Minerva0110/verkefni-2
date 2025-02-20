@@ -103,6 +103,45 @@ h1 {
   }
 }
 
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 5px; 
+}
+
+/* Specific styles for the toggle-register button */
+#toggle-register {
+  background-color: #666; /* Gray color */
+  color: white; /* White text */
+}
+
+#toggle-register:hover {
+  background-color: #555; /* Slightly darker gray on hover */
+}
+
+/* Specific styles for the toggle-login button */
+#toggle-login {
+  background-color: #666; /* Gray color */
+  color: white; /* White text */
+}
+
+#toggle-login:hover {
+  background-color: #555; /* Slightly darker gray on hover */
+}
+
+/* Specific styles for the logout-button */
+#logout-button {
+  background-color: #666; /* Gray color */
+  color: white; /* White text */
+}
+
+#logout-button:hover {
+  background-color: #555; /* Slightly darker gray on hover */
+}
 
 h2 {
   font-size: 1.5rem;
@@ -269,7 +308,6 @@ h2 {
 .delete-button:hover {
   background-color: #c0392b;
 }
-
 
 /* Quiz Completion Message */
 .quiz-completed {
