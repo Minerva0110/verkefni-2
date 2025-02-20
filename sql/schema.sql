@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS public.categories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(64) NOT NULL unique,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
