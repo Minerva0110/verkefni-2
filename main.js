@@ -8,7 +8,7 @@ let currentCategory = '';
 
 async function fetchQuizCategories() {
     try {
-        console.log('Sæki tiltæk próf...');
+        console.info('Sæki tiltæk próf...');
         const response = await fetch('/DATA/index.json');
 
         if (!response.ok) {
@@ -16,7 +16,7 @@ async function fetchQuizCategories() {
         }
 
         const quizList = await response.json();
-        console.log('Tiltæk próf:', quizList);
+        console.info('Tiltæk próf:', quizList);
 
         renderNavigation(quizList);
     } catch (error) {
@@ -38,7 +38,7 @@ function renderNavigation(quizList) {
 
 async function fetchQuizData(filename, category) {
     try {
-        console.log(`Sæki próf: ${filename}...`);
+        console.info(`Sæki próf: ${filename}...`);
         const response = await fetch(`/DATA/${filename}`);
 
         if (!response.ok) {
@@ -46,7 +46,7 @@ async function fetchQuizData(filename, category) {
         }
 
         const quizData = await response.json();
-        console.log(`Prófgögn hlaðin fyrir ${category}:`, quizData);
+        console.info(`Prófgögn hlaðin fyrir ${category}:`, quizData);
 
         correctAnswersCount = 0;
         currentCategory = category;
@@ -61,7 +61,7 @@ async function fetchQuizData(filename, category) {
         currentQuestions = shuffleArray(allQuestions);
         totalQuestionsCount = currentQuestions.length;
 
-        console.log(`Hleð ${totalQuestionsCount} spurningar fyrir ${category}`);
+        console.info(`Hleð ${totalQuestionsCount} spurningar fyrir ${category}`);
         renderQuiz(currentQuestions);
     } catch (error) {
         console.error(`Villa við að hlaða ${filename}:`, error);
@@ -99,7 +99,7 @@ function renderQuestion(quizContainer, questions, index) {
     const questionData = questions[index];
 
     if (!questionData || !questionData.question || !Array.isArray(questionData.answers)) {
-        console.warn(`⚠️ Skipping invalid question at index ${index}`, questionData);
+        console.error(`⚠️ Skipping invalid question at index ${index}`, questionData);
         renderQuestion(quizContainer, questions, index + 1);
         return;
     }
@@ -150,7 +150,7 @@ function renderQuestion(quizContainer, questions, index) {
                 e.target.parentElement.classList.add('answer--incorrect');
             }
 
-            console.log(`🔹 Spurning ${index + 1} af ${questions.length} svarað.`);
+            console.info(`🔹 Spurning ${index + 1} af ${questions.length} svarað.`);
             setTimeout(() => renderQuestion(quizContainer, questions, index + 1), 1000);
         });
 

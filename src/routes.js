@@ -9,3 +9,8 @@ router.get('/', (req, res) => {
 router.get('/questions/:category', (req, res) => {
     res.send(`Questionscategory = ${req.params.category}`);
 });
+
+router.get('/questions/:category', (req, res) => {
+    res.send(`Questionscategory = ${req.params.category}`);
+});
+

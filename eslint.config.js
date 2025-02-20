@@ -1,24 +1,17 @@
-import globals from "globals";
-import pluginReact from "eslint-plugin-react";
+import pluginJs from '@eslint/js';
+import globals from 'globals';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  {files: ["**/*.{js,mjs,cjs,jsx}"]},
-  {languageOptions: { globals: globals.browser }},
-  pluginReact.configs.flat.recommended,
+  { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
+  {
+    ...pluginJs.configs.recommended,
+    rules: {
+      // Disallow console.log
+      'no-console': [
+        'error',
+        { allow: ['info', 'group', 'groupEnd', 'error'] },
+      ],
+    },
+  },
 ];
-
-module.exports = {
-  env: {
-    node: true,
-    es2022: true,
-  },
-  extends: 'eslint:recommended',
-  parserOptions: {
-    ecmaVersion: 'latest',
-  },
-  rules: {
-    'no-console': 'warn',
-    'no-unused-vars': 'warn',
-  },
-};
