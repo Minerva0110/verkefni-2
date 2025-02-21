@@ -4,7 +4,7 @@ import path from 'path';
 export const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.sendFile(path.join(process.cwd(), 'index.html')); 
+    res.sendFile(path.join(process.cwd(), './public/index.html')); 
 });
 
 router.use('/main.js', express.static(path.join(process.cwd(), 'scripts', 'main.js')));
