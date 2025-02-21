@@ -13,7 +13,18 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 app.use(express.static(path.join(process.cwd(), 'scripts'))); 
 app.use(express.static(path.join(process.cwd(), 'styles')));  
 
-// ✅ Use routes
+const isNetlify = process.env.NETLIFY || false;
+
+
+app.use((req, res, next) => {
+  if (!isNetlify && req.hostname !== 'localhost') {
+    res.status(403).send('<h1>Access Denied 🚫</h1>');
+  } else {
+    next();
+  }
+});
+
+
 import { router } from './routes.js';
 app.use('/', router);
 
