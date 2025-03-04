@@ -5,8 +5,8 @@
   "type": "module",
   "main": "./src/server.js",
   "engines": {
-    "node": "22"
-  },
+  "node": "16.x"
+},
   "scripts": {
     "start": "concurrently \"node server.js\" \"live-server --port=5500 --host=localhost --open=/public\"",
     "start:node": "node server.js",
@@ -50,9 +50,6 @@
     "type": "git",
     "url": "git+https://github.com/Minerva0110/verkefni-2.git"
   },
-"engines": {
-  "node": "16.x"
-},
 
   "keywords": [],
   "author": "",
