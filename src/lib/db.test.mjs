@@ -1,5 +1,8 @@
 import { beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { Database } from './db';
+import pg from 'pg';
+const { Pool } = pg;
+
 
 describe('db', () => {
   /** @type import('./logger').Logger */
