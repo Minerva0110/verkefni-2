@@ -2,14 +2,13 @@ import express from 'express';
 import path from 'path';
 
 export const router = express.Router();
+  
+app.use('/scripts', express.static(path.join(__dirname, 'public', 'scripts')));
+app.use('/styles', express.static(path.join(__dirname, 'public', 'styles')));
 
 router.get('/', (req, res) => {
-    res.sendFile(path.join(process.cwd(), './public/index.html')); 
-});
-
-router.use('/main.js', express.static(path.join(process.cwd(), 'scripts', 'main.js')));
-router.use('/auth.js', express.static(path.join(process.cwd(), 'scripts', 'auth.js')));
-router.use('/styles.css', express.static(path.join(process.cwd(), 'styles', 'styles.css')));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  });
 
 router.get('/questions/:category', (req, res) => {
     res.send(`Questions category = ${req.params.category}`);

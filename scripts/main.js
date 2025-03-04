@@ -7,7 +7,7 @@ let currentCategory = '';
 
 
 async function fetchQuizCategories() {
-    console.info('✅ fetchQuizCategories() called from main.js');
+    console.info('fetchQuizCategories() called from main.js');
     try {
         console.info('Sæki tiltæk próf...');
         const response = await fetch('/DATA/index.json');
@@ -21,7 +21,7 @@ async function fetchQuizCategories() {
 
         renderNavigation(quizList);
     } catch (error) {
-        console.error('❌ Villa við að hlaða index.json:', error);
+        console.error('Villa við að hlaða index.json:', error);
     }
 }
 
@@ -151,7 +151,7 @@ function renderQuestion(quizContainer, questions, index) {
                 e.target.parentElement.classList.add('answer--incorrect');
             }
 
-            console.info(`🔹 Spurning ${index + 1} af ${questions.length} svarað.`);
+            console.info(`Spurning ${index + 1} af ${questions.length} svarað.`);
             setTimeout(() => renderQuestion(quizContainer, questions, index + 1), 1000);
         });
 
