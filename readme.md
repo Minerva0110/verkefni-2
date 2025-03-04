@@ -1,22 +1,21 @@
-# Vefforritun 2 2025, verkefni 1 sýnilausn
+# Verkefni-2
 
-## Uppsetning
+Velkomin(n) í Verkefni 2. Þetta verkefni krefst þess að þú hafir **Node.js** og **npm** til að keyra forritið.
 
-Í grunninn var verkefnið sett upp með því að keyra uppsetningu á eslint:
+## Forsendur
 
-```bash
-cd vef2-2025-v1
-npm init @eslint/config@latest
-npm install
-```
+Áður en þú heldur áfram, vinsamlegast tryggðu að þú hafir eftirfarandi uppsett:
 
-Bætt við skrám:
+- **Node.js:**  
 
-- `.editorconfig`
-- `.gitignore`
+- **npm:**  
+  Þetta er sjálfkrafa uppsett með Node.js.  
+  Til að staðfesta uppsetninguna skaltu keyra:
+  ```bash
+  node --version
+  npm --version
 
-## TODO
+## Til að ræsa forritið, keyrðu
+  npm install
+  npm start
 
-- [ ] klára test
-- [ ] klára jsdocs
-- [ ] zod sem dæmi í stað hand-parser
