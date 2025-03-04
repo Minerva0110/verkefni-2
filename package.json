@@ -10,9 +10,10 @@
   "scripts": {
     "start": "concurrently \"node server.js\" \"live-server --port=5500 --host=localhost --open=/public\"",
     "start:node": "node server.js",
-    "build": "run-s build:*",
+    "build": "run-s build:clean build:copy-public build:copy-scripts",
     "build:clean": "rimraf dist",
-    "build:copy-public": "cpy public dist --flat",
+    "build:copy-public": "cpy public dist",
+    "build:copy-scripts": "cpy scripts/**/* dist/scripts --parents",
     "lint": "eslint src",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:watch": "node --test --watch --experimental-test-module-mocks",
